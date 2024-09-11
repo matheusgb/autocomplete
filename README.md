@@ -49,6 +49,13 @@ go run main.go
 
 You can run frontend with [LiveServer vscode extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
+You can run integration tests with:
+
+```
+go test -v
+```
+But you need to initialize Elasticsearch before.
+
 ## Documentation
 
 If you want Elasticsearch with some data, use the `GET - /populate` route.
