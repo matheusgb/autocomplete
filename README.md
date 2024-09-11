@@ -35,7 +35,7 @@ Initialize Elasticsearch in docker with:
 docker-compose up
 ```
 
-If you have [air](https://github.com/air-verse/air) installed, you can run the project with the command in root folder:
+If you have [air](https://github.com/air-verse/air) installed, you can run the backend with the command in root folder:
 
 ```
 air
