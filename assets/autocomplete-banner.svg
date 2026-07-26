@@ -1,0 +1,32 @@
+<svg width="2172" height="724" viewBox="0 0 2172 724" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif; font-weight: 900; }
+      .tag { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; }
+      .ghost { font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif; font-weight: 900; }
+    </style>
+  </defs>
+
+  <rect width="2172" height="724" fill="#14161c"/>
+
+  <!-- search bar -->
+  <rect x="60" y="430" width="1600" height="110" rx="55" fill="none" stroke="#f5efe0" stroke-width="6"/>
+  <circle cx="1760" cy="485" r="26" fill="none" stroke="#f5efe0" stroke-width="6"/>
+  <line x1="1779" y1="504" x2="1815" y2="540" stroke="#f5efe0" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- typed text -->
+  <text x="96" y="510" class="title" font-size="56" fill="#f5efe0">auto</text>
+  <!-- ghost completion -->
+  <text x="230" y="510" class="ghost" font-size="56" fill="#7c5cff" opacity="0.85">complete</text>
+
+  <!-- pulse rings, standing in for the websocket push -->
+  <circle cx="1900" cy="485" r="10" fill="#7c5cff"/>
+  <circle cx="1900" cy="485" r="26" fill="none" stroke="#7c5cff" stroke-width="4" opacity="0.6"/>
+  <circle cx="1900" cy="485" r="42" fill="none" stroke="#7c5cff" stroke-width="3" opacity="0.3"/>
+
+  <!-- word AUTOCOMPLETE -->
+  <text x="60" y="300" class="title" font-size="150" fill="#f5efe0" letter-spacing="-2">AUTOCOMPLETE</text>
+
+  <!-- tagline -->
+  <text x="64" y="640" class="tag" font-size="42" fill="#7c5cff" letter-spacing="2">SUGESTOES EM TEMPO REAL COM WEBSOCKET E ELASTICSEARCH</text>
+</svg>

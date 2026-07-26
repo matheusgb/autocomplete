@@ -1,61 +1,67 @@
-<h1 align="center">
-  <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://img001.prntscr.com/file/img001/MvCSWOg2SWSs2uPk8E7C3w.png" alt="Markdownify" width="400"></a>
-  <br>
-  Autocomplete
-  <br>
-</h1>
+![Banner do Autocomplete](assets/autocomplete-banner.svg)
 
-<h4 align="center">Toy project made with <a href="https://go.dev/" target="_blank">Golang</a>.</h4>
+<h4 align="center">Sugestões de busca em tempo real com <a href="https://go.dev/" target="_blank">Go</a>, WebSocket e Elasticsearch.</h4>
 
 <p align="center">
-  <a>
-    <img src="https://img.shields.io/github/go-mod/go-version/matheusgb/autocomplete" alt="go version">
+  <img src="https://img.shields.io/github/go-mod/go-version/matheusgb/autocomplete" alt="versão do go">
+  <a href="https://github.com/matheusgb/autocomplete/actions/workflows/ci.yml">
+    <img src="https://github.com/matheusgb/autocomplete/actions/workflows/ci.yml/badge.svg" alt="CI">
+  </a>
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/badge/licença-MIT-blue.svg" alt="licença">
   </a>
 </p>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#documentation">Documentation</a>
+  <a href="#funcionalidades">Funcionalidades</a> •
+  <a href="#como-funciona">Como funciona</a> •
+  <a href="#como-usar">Como usar</a>
 </p>
 
-## Key Features
+## Funcionalidades
 
-* Saves and returns data from Elasticsearch.
-* List of most saved words in Elasticsearch.
-* Uses WebSocket to list autocomplete suggestions from Elasticsearch.
-* List of most frequently saved words in Elasticsearch using WebSocket.
+* Indexação de termos no Elasticsearch via HTTP
+* Sugestões de autocomplete por busca `wildcard`
+* Ranking dos termos mais frequentes via agregação `terms`
+* Push das sugestões em tempo real por WebSocket
+* Endpoint de health check
 
-## How To Use
+## Como funciona
 
-Initialize Elasticsearch in docker with:
+O backend expõe uma rota HTTP para indexar termos e um endpoint WebSocket para
+buscá-los. A cada mensagem recebida no socket, o servidor consulta o
+Elasticsearch por correspondências parciais do termo digitado e, em paralelo,
+recalcula os termos mais frequentes já indexados, devolvendo os dois no mesmo
+frame. O frontend (`index.html` + `script.js`) é um cliente mínimo só para
+exercitar o fluxo.
 
-```
-docker-compose up
-```
+## Como usar
 
-If you have [air](https://github.com/air-verse/air) installed, you can run the backend with the command in root folder:
-
-```
-air
-```
-
-Also, you can run with:
+### Docker
 
 ```
-go run main.go
+make up
 ```
 
-You can run frontend with [LiveServer vscode extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+Sobe o Elasticsearch e a API já conectados; a API fica em `:8080`.
 
-You can run integration tests with:
+### Local
+
+Suba o Elasticsearch:
 
 ```
-go test -v
+docker compose up elasticsearch
 ```
-But you need to initialize Elasticsearch before.
 
-## Documentation
+E rode a API:
 
-If you want Elasticsearch with some data, use the `GET - /populate` route.
+```
+make run
+```
+
+Popule alguns termos de exemplo com `GET /populate`, ou envie os seus com
+`POST /send`. Para rodar os testes (precisam do Elasticsearch no ar):
+
+```
+make test
+```
