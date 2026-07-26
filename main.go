@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -46,9 +47,14 @@ type RequestBody struct {
 }
 
 func init() {
+	elasticsearchURL := os.Getenv("ELASTICSEARCH_URL")
+	if elasticsearchURL == "" {
+		elasticsearchURL = "http://localhost:9200"
+	}
+
 	var err error
 	es, err = elasticsearch.NewClient(elasticsearch.Config{
-		Addresses: []string{"http://localhost:9200"},
+		Addresses: []string{elasticsearchURL},
 	})
 	if err != nil {
 		log.Fatalf("error creating the Elasticsearch client: %s", err)
@@ -68,6 +74,9 @@ func withCORS(next http.Handler) http.Handler {
 }
 
 func main() {
+	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte(`{"status":"ok"}`))
+	})
 	http.HandleFunc("/populate", populateIndex)
 	http.Handle("/send", withCORS(http.HandlerFunc(sendWord)))
 	http.HandleFunc("/ws", handleWebSocket)
