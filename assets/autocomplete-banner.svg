@@ -16,17 +16,17 @@
 
   <!-- typed text -->
   <text x="96" y="510" class="title" font-size="56" fill="#f5efe0">auto</text>
-  <!-- ghost completion -->
-  <text x="230" y="510" class="ghost" font-size="56" fill="#7c5cff" opacity="0.85">complete</text>
+  <!-- ghost completion, warm tone: the suggested match -->
+  <text x="230" y="510" class="ghost" font-size="56" fill="#ff9d4d" opacity="0.9">complete</text>
 
-  <!-- pulse rings, standing in for the websocket push -->
-  <circle cx="1900" cy="485" r="10" fill="#7c5cff"/>
-  <circle cx="1900" cy="485" r="26" fill="none" stroke="#7c5cff" stroke-width="4" opacity="0.6"/>
-  <circle cx="1900" cy="485" r="42" fill="none" stroke="#7c5cff" stroke-width="3" opacity="0.3"/>
+  <!-- pulse rings, cool tone: the websocket push -->
+  <circle cx="1900" cy="485" r="10" fill="#22d3c8"/>
+  <circle cx="1900" cy="485" r="26" fill="none" stroke="#22d3c8" stroke-width="4" opacity="0.6"/>
+  <circle cx="1900" cy="485" r="42" fill="none" stroke="#22d3c8" stroke-width="3" opacity="0.3"/>
 
   <!-- word AUTOCOMPLETE -->
   <text x="60" y="300" class="title" font-size="150" fill="#f5efe0" letter-spacing="-2">AUTOCOMPLETE</text>
 
   <!-- tagline -->
-  <text x="64" y="640" class="tag" font-size="42" fill="#7c5cff" letter-spacing="2">SUGESTOES EM TEMPO REAL COM WEBSOCKET E ELASTICSEARCH</text>
+  <text x="64" y="640" class="tag" font-size="42" fill="#22d3c8" letter-spacing="2">SUGESTOES EM TEMPO REAL COM WEBSOCKET E ELASTICSEARCH</text>
 </svg>
